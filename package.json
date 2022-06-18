@@ -12,6 +12,8 @@
     "astro": "^1.0.0-beta.20"
   },
   "dependencies": {
-    "cypress": "^10.0.3"
+    "cypress": "^10.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.0.12"
   }
 }
