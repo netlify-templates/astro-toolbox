@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
+import FeedbackForm from '../components/FeedbackForm.astro';
 ---
 
 <Layout title="Astro Quickstart">
@@ -11,27 +12,7 @@ import Layout from '../components/Layout.astro';
         />
       </div>
     </div>
-    <div class="resource-list">
-      <h2>
-        Here are some resources to help you on your Astro + Netlify journey:
-      </h2>
-      <ul>
-        <li>
-          <a href="https://github.com/netlify-templates/astro-quickstart"
-            >The Astro Quickstart repo</a
-          >
-        </li>
-        <li>
-          <a href="https://ntl.fyi/38O9wmY">Netlify Blog: Astro posts</a>
-        </li>
-        <li>
-          <a href="https://ntl.fyi/3KHGtyz">Netlify Docs</a>
-        </li>
-        <li>
-          <a href="https://docs.astro.build/en/getting-started/">Astro Docs</a>
-        </li>
-      </ul>
-    </div>
+    <FeedbackForm />
     <footer class="footer">
       Made with <a href="https://ntl.fyi/3P0dwBi"
         ><img
@@ -52,24 +33,6 @@ import Layout from '../components/Layout.astro';
     width: 100%;
   }
 
-  .resource-list {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: larger;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .resource-list ul {
-    text-align: left;
-    margin: 0 auto;
-    width: 300px;
-  }
-
-  .resource-list a {
-    color: black;
-    line-height: 30px;
-  }
-
   footer {
     bottom: 10px;
     font-family: Helvetica, Arial, sans-serif;
@@ -82,4 +45,32 @@ import Layout from '../components/Layout.astro';
   footer img {
     width: 20px;
   }
+  .feedback-form {
+  margin: 40px 40px;
+  min-width: 250px;
+  width: 45%;
+}
+input,
+textarea,
+button {
+  font-size: inherit;
+  margin: 15px 0;
+  padding: 12px 20px;
+  width: 100%;
+}
+button {
+  background-color: teal;
+  border: 1px solid black;
+  color: white;
+  width: 50%;
+}
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 </style>
