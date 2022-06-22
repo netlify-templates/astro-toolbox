@@ -1,14 +1,14 @@
 ---
 import Layout from '../components/Layout.astro';
 
-const response = await fetch('http://localhost:8888/.netlify/functions/joke');
-const data = await response.text();
+// const response = await fetch('/api/joke');
+// const data = await response.text();
 
 ---
 
 <Layout title="Astro Quickstart">
 	<main>
-      <blockquote>{data}</blockquote>
+      <!-- <blockquote>{data}</blockquote> -->
 	</main>
 </Layout>
 <style>
