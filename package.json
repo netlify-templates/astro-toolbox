@@ -6,10 +6,16 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint:prettier": "prettier --write \"src/**/*.{css,astro}\"",
+    "lint:eslint": "eslint \"src/**/*.{css,js}\""
   },
   "devDependencies": {
-    "astro": "^1.0.0-beta.20"
+    "astro": "^1.0.0-beta.20",
+    "eslint": "^8.18.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.0.12"
   },
   "dependencies": {
     "cypress": "^10.0.3"
