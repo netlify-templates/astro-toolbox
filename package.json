@@ -18,6 +18,7 @@
     "prettier-plugin-astro": "^0.0.12"
   },
   "dependencies": {
+    "@astrojs/netlify": "^0.4.6",
     "cypress": "^10.0.3"
   }
 }
