@@ -2,6 +2,7 @@
 import Layout from '../components/Layout.astro';
 
 let baseURL = import.meta.env.MODE === "development" ? "http://localhost:8888" : import.meta.env.DEPLOY_URL
+console.log('Found URl:', baseURL)
 let jokesEndpoint = new URL("/api/joke", baseURL)
 
 let data = ''
