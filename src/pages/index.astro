@@ -3,7 +3,7 @@ import Layout from '../components/Layout.astro';
 
 let baseURL = process.env.MODE === "production" ? process.env.DEPLOY_URL : "http://localhost:8888"
 console.log('Found URl:', baseURL)
-let jokesEndpoint = new URL("/api/joke", baseURL)
+let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
 
 let data = ''
 try {
