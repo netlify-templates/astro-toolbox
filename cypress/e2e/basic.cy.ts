@@ -12,5 +12,5 @@ describe('empty spec', () => {
   //   .and(($img) => {
   //     expect($img[0].naturalWidth).to.be.greaterThan(0);
   //   })
-  })
+  // })
 })
