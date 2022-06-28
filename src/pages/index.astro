@@ -1,7 +1,7 @@
 ---
 import Layout from '../components/Layout.astro';
 
-let baseURL = process.env.NETLIFY == 'true' ? process.env.DEPLOY_PRIME_URL : "http://localhost:8888"
+let baseURL = import.meta.env.NETLIFY == 'true' ? import.meta.env.DEPLOY_PRIME_URL : "http://localhost:8888"
 let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
 let data = ''
 
