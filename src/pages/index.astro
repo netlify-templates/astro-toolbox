@@ -1,14 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
 
-let baseURL = process.env.NETLIFY ? process.env.DEPLOY_URL : "http://localhost:8888"
-let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
-let data = ''
-try {
-  let response = await fetch(jokesEndpoint)
-  data = await response.text()
-} catch {}
-
 ---
 
 <Layout title="Astro Quickstart">
@@ -21,8 +13,7 @@ try {
       </div>
     </div>
     <div class="jokes">
-      <a href={jokesEndpoint}>Jokes API created with Netlify Functions</a>
-      <blockquote>{data}</blockquote>
+      <a href='api/joke'>Jokes API created with Netlify Functions</a>
     </div>
     <footer class="footer">
       Made with <a href="https://ntl.fyi/3P0dwBi"
