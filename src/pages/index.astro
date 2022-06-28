@@ -1,24 +1,10 @@
 ---
 import Layout from '../components/Layout.astro';
 
-// Determine the appropriate baseURL on the context of where we're ran
-function baseURL() {
-  if(process.env.CONTEXT == 'deploy-preview') { 
-    return process.env.DEPLOY_PRIME_URL
-  }
-  else if(process.env.CONTEXT == 'production') {
-    return process.env.URL
-  }
-  else {
-    return "http://localhost:8888"
-  }
-}
-
-let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL())
 let data = ''
 
 try {
-  let response = await fetch(jokesEndpoint)
+  let response = await fetch("/.netlify/functions/joke")
   data = await response.text()
 } catch {}
 
