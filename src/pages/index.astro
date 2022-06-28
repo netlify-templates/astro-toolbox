@@ -1,10 +1,8 @@
 ---
 import Layout from '../components/Layout.astro';
 
-let baseURL = process.env.MODE === "production" ? process.env.DEPLOY_URL : "http://localhost:8888"
-console.log('Found URl:', baseURL)
+let baseURL = process.env.NETLIFY ? process.env.DEPLOY_URL : "http://localhost:8888"
 let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
-
 let data = ''
 try {
   let response = await fetch(jokesEndpoint)
@@ -23,6 +21,7 @@ try {
       </div>
     </div>
     <div class="jokes">
+      <a href={jokesEndpoint}>Jokes API created with Netlify Functions</a>
       <blockquote>{data}</blockquote>
     </div>
     <footer class="footer">
