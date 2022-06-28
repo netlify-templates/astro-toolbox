@@ -1,8 +1,13 @@
 ---
 import Layout from '../components/Layout.astro';
 
-const response = await fetch('http://localhost:8888/api/joke');
-const data = await response.text();
+let baseURL = process.env.NETLIFY || process.env.CONTEXT == 'deploy-preview' ? process.env.DEPLOY_URL : "http://localhost:8888"
+let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
+let data = ''
+try {
+  let response = await fetch(jokesEndpoint)
+  data = await response.text()
+} catch {}
 
 ---
 
