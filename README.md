@@ -14,6 +14,8 @@ Love reading, here's blog post: www.netlify.app/blog/deploy-your-astro-project-f
 - [Regular Setup](#regular-setup)
   - [Cloning + Install Packages](#1-cloning--install-packages)
   - [Deploying](#2-deploying)
+- [Netlify Functions](#netlify-functions)
+  - [Netlify Functions Resources](#netlify-functions-resources)
 - [Astro + Netlify Resources](#astro--netlify-resources)
 - [Project Structure](#project-structure)
 - [Commands](#commands)
@@ -59,6 +61,35 @@ Click this button and it will help you create a new repo, create a new Netlify p
   - Use the Netlify CLI's create from template command `netlify sites:create-template astro-quickstart` which will create a repo, Netlify project, and deploy it
     
   - If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
+
+## Netlify Functions
+
+With Netlify, you can build out server-side code without having to setup and maintain a dedicated server. Inside of our default folder path, [`netlify/functions`](./netlify/functions) you can see an example of the format for JavaScript functions with the [`joke.js`](./netlify/functions/joke.js) file.
+
+The function format expects an `async` function named `handler` to be exported.*
+
+```js
+export const handler = async () => {
+  // Your code goes in here!
+}
+```
+
+* *Note: ESLint may report that the async is unnecessary if there is no `await` code within the function, but the `async` is required. Do not delete it.*
+
+This will be the function that will be invoked whenever a client makes a request to the generated endpoints. The endpoint's format is followed as `/.netlify/functions/joke`. So whenever the site is deployed, if you go to `https://<site base url>/.netlify/functions/joke` you will see a random joke!
+
+> Side note: In our example, we're using `import` to include data from another location and `export const const handler` to let our function be consumed by Netlify. We're able to do this because of [esbuild](https://esbuild.github.io). This is a bundler configuration we set in our `netlify.toml` under `[functions]`.
+
+### Netlify Functions Resources
+
+There is quite a bit you can do with these functions, so here are some additional resources to learn more!
+
+- [Netlify Function Format](https://docs.netlify.com/functions/build-with-javascript/#synchronous-function-format)
+- [Build Netlify Functions with TypeScript](https://docs.netlify.com/functions/build-with-typescript/)
+- [Event-triggered Functions](https://docs.netlify.com/functions/trigger-on-events/)
+- [What are Background Functions](https://www.netlify.com/blog/2021/01/07/what-are-background-functions/)
+- [Netlify Functions - Examples](https://functions.netlify.com/examples/)
+- [Using esbuild as your bundler for new ECMAScript Features](https://www.netlify.com/blog/2021/04/02/modern-faster-netlify-functions/)
 
 ## Astro + Netlify Resources
 

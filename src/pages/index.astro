@@ -1,5 +1,15 @@
 ---
 import Layout from '../components/Layout.astro';
+
+let baseURL = process.env.NETLIFY == 'true' ? process.env.DEPLOY_PRIME_URL : "http://localhost:8888"
+let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
+let data = ''
+
+try {
+  let response = await fetch(jokesEndpoint)
+  data = await response.text()
+} catch {}
+
 ---
 
 <Layout title="Astro Quickstart">
@@ -11,26 +21,8 @@ import Layout from '../components/Layout.astro';
         />
       </div>
     </div>
-    <div class="resource-list">
-      <h2>
-        Here are some resources to help you on your Astro + Netlify journey:
-      </h2>
-      <ul>
-        <li>
-          <a href="https://github.com/netlify-templates/astro-quickstart"
-            >The Astro Quickstart repo</a
-          >
-        </li>
-        <li>
-          <a href="https://ntl.fyi/38O9wmY">Netlify Blog: Astro posts</a>
-        </li>
-        <li>
-          <a href="https://ntl.fyi/3KHGtyz">Netlify Docs</a>
-        </li>
-        <li>
-          <a href="https://docs.astro.build/en/getting-started/">Astro Docs</a>
-        </li>
-      </ul>
+    <div class="jokes">
+     <blockquote>{data}</blockquote>
     </div>
     <footer class="footer">
       Made with <a href="https://ntl.fyi/3P0dwBi"
@@ -52,22 +44,9 @@ import Layout from '../components/Layout.astro';
     width: 100%;
   }
 
-  .resource-list {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: larger;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .resource-list ul {
-    text-align: left;
-    margin: 0 auto;
-    width: 300px;
-  }
-
-  .resource-list a {
-    color: black;
-    line-height: 30px;
+  blockquote {
+    border-left: 5px solid #ccc;
+    padding: 0.5rem;
   }
 
   footer {
