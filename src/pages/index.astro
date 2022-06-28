@@ -1,8 +1,10 @@
 ---
 import Layout from '../components/Layout.astro';
 
-let baseURL = process.env.CONTEXT == 'deploy-preview' ? process.env.DEPLOY_PRIME_URL : "http://localhost:8888"
+let baseURL = process.env.CONTEXT != 'dev' ? process.env.DEPLOY_PRIME_URL : "http://localhost:8888"
 let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
+console.log('ENV', process.env.NETLIFY)
+console.log('ENV', typeof process.env.NETLIFY)
 let data = ''
 try {
   let response = await fetch(jokesEndpoint)
