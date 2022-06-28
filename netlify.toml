@@ -4,6 +4,9 @@
   functions = "netlify/functions"
   publish = "dist"
 
+[functions]
+  node_bundler = "esbuild"
+
 [[plugins]] 
   package = "netlify-plugin-cypress"
 
