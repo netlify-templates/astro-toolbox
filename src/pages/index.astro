@@ -1,8 +1,20 @@
 ---
 import Layout from '../components/Layout.astro';
 
-let baseURL = process.env.NETLIFY == 'true' ? process.env.DEPLOY_PRIME_URL : "http://localhost:8888"
-let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
+// Determine the appropriate baseURL on the context of where we're ran
+function baseURL() {
+  if(process.env.CONTEXT == 'deploy-preview') { 
+    return process.env.DEPLOY_PRIME_URL
+  }
+  else if(process.env.CONTEXT == 'production') {
+    return process.env.URL
+  }
+  else {
+    return "http://localhost:8888"
+  }
+}
+
+let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL())
 let data = ''
 
 try {
