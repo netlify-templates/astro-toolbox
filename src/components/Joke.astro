@@ -1,6 +1,6 @@
 ---
-const context = process.env.CONTEXT
-let baseURL = context == "deploy-preview" ? process.env.DEPLOY_PRIME_URL : context == 'production' ? process.env.URL : "http://localhost:8888"
+const context = import.meta.env.CONTEXT
+let baseURL = context == "deploy-preview" ? import.meta.env.DEPLOY_PRIME_URL : context == 'production' ? import.meta.env.URL : "http://localhost:8888"
 let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
 let data = ''
 
