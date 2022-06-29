@@ -1,6 +1,5 @@
 ---
 import Layout from '../components/Layout.astro';
-import Joke from '../components/Joke.astro';
 ---
 
 <Layout title="Astro Quickstart">
@@ -12,7 +11,7 @@ import Joke from '../components/Joke.astro';
         />
       </div>
     </div>
-    <Joke client:load/>
+    <a href="/.netlify/functions/joke">Joke</a>
     <footer class="footer">
       Made with <a href="https://ntl.fyi/3P0dwBi"
         ><img
