@@ -2,7 +2,6 @@
 import Layout from '../components/Layout.astro';
 
 const context = process.env.CONTEXT
-console.log('context', process.env)
 let baseURL = context == "deploy-preview" ? process.env.DEPLOY_PRIME_URL : context == 'production' ? process.env.URL : "http://localhost:8888"
 let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
 let data = ''
