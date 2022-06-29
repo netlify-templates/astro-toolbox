@@ -1,16 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
-
-const context = process.env.CONTEXT
-let baseURL = context == "deploy-preview" ? process.env.DEPLOY_PRIME_URL : context == 'production' ? process.env.URL : "http://localhost:8888"
-let jokesEndpoint = new URL("/.netlify/functions/joke", baseURL)
-let data = ''
-
-try {
-  let response = await fetch(jokesEndpoint)
-  data = await response.text()
-} catch {}
-
+import Joke from '../components/Joke.astro';
 ---
 
 <Layout title="Astro Quickstart">
@@ -22,9 +12,7 @@ try {
         />
       </div>
     </div>
-    <div class="jokes">
-     <blockquote>{data}</blockquote>
-    </div>
+    <Joke client:load/>
     <footer class="footer">
       Made with <a href="https://ntl.fyi/3P0dwBi"
         ><img
