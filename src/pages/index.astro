@@ -25,7 +25,7 @@ import FeedbackForm from '../components/FeedbackForm.astro';
 </Layout>
 
 <style>
-  html {
+  :root {
     background-color: unset;
   }
   .logo img {
@@ -33,44 +33,26 @@ import FeedbackForm from '../components/FeedbackForm.astro';
     width: 100%;
   }
 
-  footer {
-    bottom: 10px;
-    font-family: Helvetica, Arial, sans-serif;
+  main {
+    padding: 2rem 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0 auto;
+    max-width: 60ch;
+    align-items: center;
+  } 
+
+  footer {
     width: 100%;
-    position: fixed;
-    text-align: center;
+    height: 100px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   footer img {
     width: 20px;
   }
-  .feedback-form {
-  margin: 40px 40px;
-  min-width: 250px;
-  width: 45%;
-}
-input,
-textarea,
-button {
-  font-size: inherit;
-  margin: 15px 0;
-  padding: 12px 20px;
-  width: 100%;
-}
-button {
-  background-color: teal;
-  border: 1px solid black;
-  color: white;
-  width: 50%;
-}
-.hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
 </style>
