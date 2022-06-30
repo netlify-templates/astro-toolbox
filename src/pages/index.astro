@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
+import FeedbackForm from '../components/FeedbackForm.astro';
 ---
 
 <Layout title="Astro Quickstart">
@@ -11,7 +12,8 @@ import Layout from '../components/Layout.astro';
         />
       </div>
     </div>
-    <a href="/api/joke">
+    <FeedbackForm />
+    <a class="jokes-link" href="/api/joke">
     <h3>
       Click here for function-loaded jokes!
     </h3>
@@ -28,8 +30,7 @@ import Layout from '../components/Layout.astro';
 </Layout>
 
 <style>
-  html {
-    background-color: unset;
+  :root {
     text-align: center;
   }
   .logo img {
@@ -37,18 +38,23 @@ import Layout from '../components/Layout.astro';
     width: 100%;
   }
 
-  blockquote {
-    border-left: 5px solid #ccc;
-    padding: 0.5rem;
-  }
+  main {
+    padding: 2rem 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 60ch;
+    align-items: center;
+  } 
 
   footer {
-    bottom: 10px;
-    font-family: Helvetica, Arial, sans-serif;
-    margin: 0 auto;
     width: 100%;
-    position: fixed;
-    text-align: center;
+    height: 100px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   footer img {
