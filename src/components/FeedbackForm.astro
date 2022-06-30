@@ -1,10 +1,8 @@
 ---
-import Layout from '../components/Layout.astro';
 ---
 
-<Layout title="Feedback Form">
-    <p>Here's an example of a Netlify Form! When you fill this out, the submissions can be found in the Netlify Admin site.</p>
-    <div class="feedback-form">
+  <p>Here's an example of a Netlify Form! When you fill this out, the submissions can be found in the Netlify Admin site.</p>
+  <div class="feedback-form">
       <form
         netlify
         netlify-honeypot
@@ -26,8 +24,7 @@ import Layout from '../components/Layout.astro';
         <textarea id="feedback" wrap="soft" name="feedback" required></textarea>
         <button type="submit">Submit</button>
       </form>
-    </div>
-</Layout>
+  </div>
 
 <style>
   .feedback-form {

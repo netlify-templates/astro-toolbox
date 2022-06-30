@@ -62,6 +62,56 @@ Click this button and it will help you create a new repo, create a new Netlify p
     
   - If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
 
+## Forms
+
+Netlify Forms are a way to wire up your native HTML into being able to seamlessly handle submissions. To get a form working, we need to add two extra things:
+
+1. An extra attribute on the `form` tag, `data-netlify="true"`
+
+Adding this attribute to our `form` tag will let Netlify know when it loads the page, that it needs to be aware of submissions made through it.
+
+2. A hidden input in the form, `<input type="hidden" name="form-name" value="feedback" />`
+
+Adding this extra input allows our form to be given a name that Netlify can store submissions to. It is a hidden input so your users won't see it but it will pass along the name of our form to Netlify when we submit. In our Netlify Admins site under Forms, we will see our Active Form named `feedback` and all submissions will go there.
+
+With both of those we're ready for folks to give us feedback!
+
+### Adding a custom submission page
+
+While Netlify provides a default submission page for folks, we can customize it as well! With the `action` attribute on the `form` tag we will be able to direct our users to our own page.
+
+In [`components/FeedbackForm.js`](./components/FeedbackForm.js) you'll see the form has the attribute `action="/success"` this will take our user to the custom route `/success` which we created under [`pages/success.js`](./pages/success.js). As long as the page exists, you can direct folks to it!
+
+### Blocking bot spam with a honeypot field
+
+Many bots scan through webpages and try to see what pages and forms they can get access to. Instead of letting our website receive spam submissions, we can filter out unrelated submissions with a visually-hidden input field.
+
+```html
+<p class="hidden">
+  <label>
+    Don’t fill this out if you’re human: <input name="bot-field" />
+  </label>
+</p>
+```
+
+Since screenreader users will still have this announced, it is important for us to
+communicate that this is a field not meant to be filled in.
+
+For this to work we also need to add a `data-netlify-honeypot` attribute to the form element.
+
+```html
+<form data-netlify="true" data-netlify-honeypot="bot-field" action="/success" method="POST"></form>
+```
+
+[See it here in the template code.](https://github.com/netlify-templates/next-toolbox/blob/main/components/FeedbackForm.js#L8)
+
+### Forms Resources
+
+- [Netlify Forms Setup](https://docs.netlify.com/forms/setup/)
+- [Netlify Forms](https://www.netlify.com/products/forms/#main)
+- [Netlify Forms - Form Triggered Functions](https://docs.netlify.com/functions/trigger-on-events/)
+- [Netlify Forms - Using reCAPTCHA 2](https://docs.netlify.com/forms/spam-filters/#recaptcha-2-challenge)
+
 ## Netlify Functions
 
 With Netlify, you can build out server-side code without having to setup and maintain a dedicated server. Inside of our default folder path, [`netlify/functions`](./netlify/functions) you can see an example of the format for JavaScript functions with the [`joke.js`](./netlify/functions/joke.js) file.
