@@ -56,7 +56,7 @@ And now your project should be running on <http://localhost:8888>.
 
 Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-quickstart)
+[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-toolbox)
 
 ### Deploying using the Netlify CLI
 
@@ -65,7 +65,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
   - Clone this repo with one of these options:
 
     - Click the 'Use this template' button at the top of the page
-    - Or via the command line `git clone https://github.com/netlify-templates/astro-quickstart`
+    - Or via the command line `git clone https://github.com/netlify-templates/astro-toolbox`
 
   - Then install the necessary packages and run the project locally to make sure everything works.
 
@@ -85,7 +85,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
 
   Here are a few other ways you can deploy this template:
     
-  - Use the Netlify CLI's create from template command `netlify sites:create-template astro-quickstart` which will create a repo, Netlify project, and deploy it
+  - Use the Netlify CLI's create from template command `netlify sites:create-template astro-toolbox` which will create a repo, Netlify project, and deploy it
     
   - If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
 
