@@ -17,6 +17,8 @@ This is a [Astro](https://astro.build) project bootstrapped from the Astro CLI. 
   - [Forms Resources](#forms-resources)
 - [Netlify Functions](#netlify-functions)
   - [Netlify Functions Resources](#netlify-functions-resources)
+- [Redirects](#redirects)
+  - [Redirect Resources](#redirect-resources)
 - [Astro + Netlify Resources](#astro--netlify-resources)
 - [Project Structure](#project-structure)
 - [Commands](#commands)
@@ -24,7 +26,6 @@ This is a [Astro](https://astro.build) project bootstrapped from the Astro CLI. 
   - [Included Default Testing](#included-default-testing)
   - [Removing Renovate](#removing-renovate)
   - [Removing Cypress](#removing-cypress)
-- [Want to learn more?](#want-to-learn-more)
 
 ## Getting Started
 
@@ -167,6 +168,36 @@ There is quite a bit you can do with these functions, so here are some additiona
 - [Netlify Functions - Examples](https://functions.netlify.com/examples/)
 - [Using esbuild as your bundler for new ECMAScript Features](https://www.netlify.com/blog/2021/04/02/modern-faster-netlify-functions/)
 
+## Redirects
+
+In the [`netlify.toml`](./netlify.toml) configuration file there is an example of how to implement redirects. Redirects can be used to do many things from redirecting Single Page Apps more predictably, redirecting based on country/language to leveraging On-Demand Builders for [Distributed Persistant Rendering](https://www.netlify.com/blog/2021/04/14/distributed-persistent-rendering-a-new-jamstack-approach-for-faster-builds/). 
+
+In the example we'll be using redirects to have a shorter endpoint to Netlify functions. By default, you call a Netlify function when requesting a path like `https://yoursite.netlify.com/.netlify/functions/functionName`. Instead, we'll redirect all calls from a path including `/api` to call on the Netlify functions. So the path will be `https://yoursite.netlify.com/api/functionName`, a lot easier to remember too. 
+
+
+### Example
+```toml
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
+```
+
+First we create a section in the `.toml` for the redirect using `[[redirects]]`. Each redirect should have this line to start the redirect code, and the redirects will be executed in the order they appear in the `.toml` from top to bottom.
+
+The bare minimum needed is the `from` and `to`, letting the [CDN](https://www.netlify.com/blog/edge-cdn-serverless-cloud-meaaning) know when a route is requested, the `from`, forward it on to another path, the `to`. In the example, we also added an 'Ok' status code, 200, and set the `force` to true to make sure it _always_ redirects from the `from` path.
+
+There are many ways to use redirects. Check out the resouces below to learn more.
+
+### Redirect Resources
+
+- [Redirect syntax and configuration](https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file)
+- [Redirect options](https://docs.netlify.com/routing/redirects/redirect-options/)
+- [Creating better, more predicatable redirect rules for SPAs](https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/)
+- [Redirect by country or language](https://docs.netlify.com/routing/redirects/redirect-options/#redirect-by-country-or-language)
+- [On-Demand Builders](https://docs.netlify.com/configure-builds/on-demand-builders/)
+
 ## Astro + Netlify Resources
 
 Here are some resources to help you on your Astro + Netlify coding fun!
@@ -214,35 +245,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
 
-## Redirects
-
-In the [`netlify.toml`](./netlify.toml) configuration file there is an example of how to implement redirects. Redirects can be used to do many things from redirecting Single Page Apps more predictably, redirecting based on country/language to leveraging On-Demand Builders for [Distributed Persistant Rendering](https://www.netlify.com/blog/2021/04/14/distributed-persistent-rendering-a-new-jamstack-approach-for-faster-builds/). 
-
-In the example we'll be using redirects to have a shorter endpoint to Netlify functions. By default, you call a Netlify function when requesting a path like `https://yoursite.netlify.com/.netlify/functions/functionName`. Instead, we'll redirect all calls from a path including `/api` to call on the Netlify functions. So the path will be `https://yoursite.netlify.com/api/functionName`, a lot easier to remember too. 
-
-
-### Example
-```toml
-[[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
-status = 200
-force = true
-```
-
-First we create a section in the `.toml` for the redirect using `[[redirects]]`. Each redirect should have this line to start the redirect code, and the redirects will be executed in the order they appear in the `.toml` from top to bottom.
-
-The bare minimum needed is the `from` and `to`, letting the [CDN](https://www.netlify.com/blog/edge-cdn-serverless-cloud-meaaning) know when a route is requested, the `from`, forward it on to another path, the `to`. In the example, we also added an 'Ok' status code, 200, and set the `force` to true to make sure it _always_ redirects from the `from` path.
-
-There are many ways to use redirects. Check out the resouces below to learn more.
-
-### Redirect Resources
-
-- [Redirect syntax and configuration](https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file)
-- [Redirect options](https://docs.netlify.com/routing/redirects/redirect-options/)
-- [Creating better, more predicatable redirect rules for SPAs](https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/)
-- [Redirect by country or language](https://docs.netlify.com/routing/redirects/redirect-options/#redirect-by-country-or-language)
-- [On-Demand Builders](https://docs.netlify.com/configure-builds/on-demand-builders/)
 
 ## Testing
 
@@ -285,7 +287,3 @@ And lastly if you’d like to remove Cypress entirely, delete the entire `cypre
 ```bash
 npm uninstall cypress
 ```
-
-## Want to learn more?
-
-Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
