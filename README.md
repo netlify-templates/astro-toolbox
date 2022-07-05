@@ -2,7 +2,7 @@
 
 [![astro](https://user-images.githubusercontent.com/3611928/167888733-9bf21eda-d051-46f3-9184-12b14e21a10a.png)](https://ntl.fyi/3LZGn73)
 
-This is a [Astro](https://astro.build) project bootstrapped from the Astro CLI. It is a reference on how to integrate commonly used features within [Netlify](https://netlify.com) for Astro. 
+This is an [Astro](https://astro.build) project bootstrapped from the Astro CLI. It is a reference on how to integrate commonly used features within [Netlify](https://netlify.com) for Astro. 
 
 ## Table of Contents:
 
@@ -32,13 +32,15 @@ This is a [Astro](https://astro.build) project bootstrapped from the Astro CLI. 
 If you want to get started locally, you can clone the project, install the dependencies and run the dev command!
 
 ```
-git clone git@github.com:netlify-templates/astro-toolbox.git
+git clone https://github.com/netlify-templates/astro-toolbox/
 cd astro-toolbox
 npm install
 npm run dev
 ```
 
 You can then open up <http://localhost:3000> with your browser to see the result! Open up `pages/index.astro` and modify the code to see the changes auto update as you save.
+
+> 🧠 Just a heads up, you will not be able to see the function data or redirect output until you run locally with `netlify dev` (info below in [Netlify CLI section](#running-locally-with-the-netlify-cli))
 
 ### Running locally with the Netlify CLI
 
@@ -93,7 +95,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
 
 Netlify Forms are a way to wire up your native HTML into being able to seamlessly handle submissions. To get a form working, we need to add two extra things:
 
-1. An extra attribute on the `form` tag, `data-netlify="true"`
+1. An extra attribute on the `form` tag, `netlify`
 
 Adding this attribute to our `form` tag will let Netlify know when it loads the page, that it needs to be aware of submissions made through it.
 
@@ -124,10 +126,10 @@ Many bots scan through webpages and try to see what pages and forms they can get
 Since screenreader users will still have this announced, it is important for us to
 communicate that this is a field not meant to be filled in.
 
-For this to work we also need to add a `data-netlify-honeypot` attribute to the form element.
+For this to work we also need to add a `netlify-honeypot` attribute to the form element.
 
 ```html
-<form data-netlify="true" data-netlify-honeypot="bot-field" action="/success" method="POST"></form>
+<netlify data-netlify-honeypot="bot-field" name="feedback method="POST" action="/success"></form>
 ```
 
 [See it here in the template code.](https://github.com/netlify-templates/next-toolbox/blob/main/components/FeedbackForm.js#L8)
@@ -184,7 +186,7 @@ status = 200
 force = true
 ```
 
-First we create a section in the `.toml` for the redirect using `[[redirects]]`. Each redirect should have this line to start the redirect code, and the redirects will be executed in the order they appear in the `.toml` from top to bottom.
+First, we create a section in the `.toml` for the redirect using `[[redirects]]`. Each redirect should have this line to start the redirect code, and the redirects will be executed in the order they appear in the `.toml` from top to bottom.
 
 The bare minimum needed is the `from` and `to`, letting the [CDN](https://www.netlify.com/blog/edge-cdn-serverless-cloud-meaaning) know when a route is requested, the `from`, forward it on to another path, the `to`. In the example, we also added an 'Ok' status code, 200, and set the `force` to true to make sure it _always_ redirects from the `from` path.
 
