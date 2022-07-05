@@ -1,21 +1,24 @@
- [![astro](https://user-images.githubusercontent.com/3611928/167888733-9bf21eda-d051-46f3-9184-12b14e21a10a.png)](https://ntl.fyi/3LZGn73)
+# Astro Toolbox Template  
 
-# Astro Quickstart Template   
+[![astro](https://user-images.githubusercontent.com/3611928/167888733-9bf21eda-d051-46f3-9184-12b14e21a10a.png)](https://ntl.fyi/3LZGn73)
 
-This is a bare-bones Astro project that has everything you need to quickly deploy it to [Netlify](https://netlify.com). 
-
-Hate reading, here's a video: https://youtu.be/SknFflQVOys!
-
-Love reading, here's blog post: www.netlify.app/blog/deploy-your-astro-project-fast/!
+This is an [Astro](https://astro.build) project bootstrapped from the Astro CLI. It is a reference on how to integrate commonly used features within [Netlify](https://netlify.com) for Astro. 
 
 ## Table of Contents:
 
-- [Quick Setup + Deploy Option](#quick-setup--deploy-option)
-- [Regular Setup](#regular-setup)
-  - [Cloning + Install Packages](#1-cloning--install-packages)
-  - [Deploying](#2-deploying)
+- [Getting Started](#getting-started)
+  - [Running locally with the Netlify CLI](#running-locally-with-the-netlify-cli)
+- [Deploy to Netlify](#deploy-to-netlify)
+  - [Quick setup & Deploy Option](#quick-setup--deploy-option)
+  - [Deploying using the Netlify CLI](#deploying-using-the-netlify-cli)
+- [Forms](#forms)
+  - [Adding a Custom Submission Page](#adding-a-custom-submission-page)
+  - [Blocking Bot Spam with a Honeypot Field](#blocking-bot-spam-with-a-honeypot-field)
+  - [Forms Resources](#forms-resources)
 - [Netlify Functions](#netlify-functions)
   - [Netlify Functions Resources](#netlify-functions-resources)
+- [Redirects](#redirects)
+  - [Redirect Resources](#redirect-resources)
 - [Astro + Netlify Resources](#astro--netlify-resources)
 - [Project Structure](#project-structure)
 - [Commands](#commands)
@@ -23,22 +26,48 @@ Love reading, here's blog post: www.netlify.app/blog/deploy-your-astro-project-f
   - [Included Default Testing](#included-default-testing)
   - [Removing Renovate](#removing-renovate)
   - [Removing Cypress](#removing-cypress)
-- [Want to learn more?](#want-to-learn-more)
 
-## Quick Setup + Deploy Option
+## Getting Started
+
+If you want to get started locally, you can clone the project, install the dependencies and run the dev command!
+
+```
+git clone https://github.com/netlify-templates/astro-toolbox/
+cd astro-toolbox
+npm install
+npm run dev
+```
+
+You can then open up <http://localhost:3000> with your browser to see the result! Open up `pages/index.astro` and modify the code to see the changes auto update as you save.
+
+> 🧠 Just a heads up, you will not be able to see the function data or redirect output until you run locally with `netlify dev` (info below in [Netlify CLI section](#running-locally-with-the-netlify-cli))
+
+### Running locally with the Netlify CLI
+
+When using this template, you might want to see Netlify features such as redirects, functions, or preview the deploy locally first. To do, this you can install and use the Netlify CLI!
+
+```
+npm install -g netlify-cli # to install the Netlify CLI tool globally
+netlify dev
+```
+
+And now your project should be running on <http://localhost:8888>.
+
+## Deploy to Netlify
+### Quick Setup + Deploy Option
 
 Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-quickstart)
+[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-toolbox)
 
-## Regular Setup
+### Deploying using the Netlify CLI
 
- ### 1. Cloning + Install Packages
+ #### 1. Cloning + Install Packages
 
   - Clone this repo with one of these options:
 
     - Click the 'Use this template' button at the top of the page
-    - Or via the command line `git clone https://github.com/netlify-templates/astro-quickstart`
+    - Or via the command line `git clone https://github.com/netlify-templates/astro-toolbox`
 
   - Then install the necessary packages and run the project locally to make sure everything works.
 
@@ -49,7 +78,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
 
   > Alternatively, you can run this locally with [the Netlify CLI](https://docs.netlify.com/cli/get-started/)'s by running the `netlify dev` command for more options like receiving a live preview to share (`netlify dev --live`) and the ability to test [Netlify Functions](https://www.netlify.com/products/functions) and [redirects](https://docs.netlify.com/routing/redirects/). 
 
-  ### 2. Deploying
+  #### 2. Deploying
   - Install the Netlify CLI globally `npm install netlify-cli -g`
     
   - Run `npm run build`
@@ -58,7 +87,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
 
   Here are a few other ways you can deploy this template:
     
-  - Use the Netlify CLI's create from template command `netlify sites:create-template astro-quickstart` which will create a repo, Netlify project, and deploy it
+  - Use the Netlify CLI's create from template command `netlify sites:create-template astro-toolbox` which will create a repo, Netlify project, and deploy it
     
   - If you want to utilize continuous deployment through GitHub webhooks, run the Netlify command `netlify init` to create a new project based on your repo or `netlify link` to connect your repo to an existing project
 
@@ -66,7 +95,7 @@ Click this button and it will help you create a new repo, create a new Netlify p
 
 Netlify Forms are a way to wire up your native HTML into being able to seamlessly handle submissions. To get a form working, we need to add two extra things:
 
-1. An extra attribute on the `form` tag, `data-netlify="true"`
+1. An extra attribute on the `form` tag, `netlify`
 
 Adding this attribute to our `form` tag will let Netlify know when it loads the page, that it needs to be aware of submissions made through it.
 
@@ -97,10 +126,10 @@ Many bots scan through webpages and try to see what pages and forms they can get
 Since screenreader users will still have this announced, it is important for us to
 communicate that this is a field not meant to be filled in.
 
-For this to work we also need to add a `data-netlify-honeypot` attribute to the form element.
+For this to work we also need to add a `netlify-honeypot` attribute to the form element.
 
 ```html
-<form data-netlify="true" data-netlify-honeypot="bot-field" action="/success" method="POST"></form>
+<netlify data-netlify-honeypot="bot-field" name="feedback method="POST" action="/success"></form>
 ```
 
 [See it here in the template code.](https://github.com/netlify-templates/next-toolbox/blob/main/components/FeedbackForm.js#L8)
@@ -140,6 +169,36 @@ There is quite a bit you can do with these functions, so here are some additiona
 - [What are Background Functions](https://www.netlify.com/blog/2021/01/07/what-are-background-functions/)
 - [Netlify Functions - Examples](https://functions.netlify.com/examples/)
 - [Using esbuild as your bundler for new ECMAScript Features](https://www.netlify.com/blog/2021/04/02/modern-faster-netlify-functions/)
+
+## Redirects
+
+In the [`netlify.toml`](./netlify.toml) configuration file there is an example of how to implement redirects. Redirects can be used to do many things from redirecting Single Page Apps more predictably, redirecting based on country/language to leveraging On-Demand Builders for [Distributed Persistant Rendering](https://www.netlify.com/blog/2021/04/14/distributed-persistent-rendering-a-new-jamstack-approach-for-faster-builds/). 
+
+In the example we'll be using redirects to have a shorter endpoint to Netlify functions. By default, you call a Netlify function when requesting a path like `https://yoursite.netlify.com/.netlify/functions/functionName`. Instead, we'll redirect all calls from a path including `/api` to call on the Netlify functions. So the path will be `https://yoursite.netlify.com/api/functionName`, a lot easier to remember too. 
+
+
+### Example
+```toml
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
+```
+
+First, we create a section in the `.toml` for the redirect using `[[redirects]]`. Each redirect should have this line to start the redirect code, and the redirects will be executed in the order they appear in the `.toml` from top to bottom.
+
+The bare minimum needed is the `from` and `to`, letting the [CDN](https://www.netlify.com/blog/edge-cdn-serverless-cloud-meaaning) know when a route is requested, the `from`, forward it on to another path, the `to`. In the example, we also added an 'Ok' status code, 200, and set the `force` to true to make sure it _always_ redirects from the `from` path.
+
+There are many ways to use redirects. Check out the resouces below to learn more.
+
+### Redirect Resources
+
+- [Redirect syntax and configuration](https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file)
+- [Redirect options](https://docs.netlify.com/routing/redirects/redirect-options/)
+- [Creating better, more predicatable redirect rules for SPAs](https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/)
+- [Redirect by country or language](https://docs.netlify.com/routing/redirects/redirect-options/#redirect-by-country-or-language)
+- [On-Demand Builders](https://docs.netlify.com/configure-builds/on-demand-builders/)
 
 ## Astro + Netlify Resources
 
@@ -188,35 +247,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
 
-## Redirects
-
-In the [`netlify.toml`](./netlify.toml) configuration file there is an example of how to implement redirects. Redirects can be used to do many things from redirecting Single Page Apps more predictably, redirecting based on country/language to leveraging On-Demand Builders for [Distributed Persistant Rendering](https://www.netlify.com/blog/2021/04/14/distributed-persistent-rendering-a-new-jamstack-approach-for-faster-builds/). 
-
-In the example we'll be using redirects to have a shorter endpoint to Netlify functions. By default, you call a Netlify function when requesting a path like `https://yoursite.netlify.com/.netlify/functions/functionName`. Instead, we'll redirect all calls from a path including `/api` to call on the Netlify functions. So the path will be `https://yoursite.netlify.com/api/functionName`, a lot easier to remember too. 
-
-
-### Example
-```toml
-[[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
-status = 200
-force = true
-```
-
-First we create a section in the `.toml` for the redirect using `[[redirects]]`. Each redirect should have this line to start the redirect code, and the redirects will be executed in the order they appear in the `.toml` from top to bottom.
-
-The bare minimum needed is the `from` and `to`, letting the [CDN](https://www.netlify.com/blog/edge-cdn-serverless-cloud-meaaning) know when a route is requested, the `from`, forward it on to another path, the `to`. In the example, we also added an 'Ok' status code, 200, and set the `force` to true to make sure it _always_ redirects from the `from` path.
-
-There are many ways to use redirects. Check out the resouces below to learn more.
-
-### Redirect Resources
-
-- [Redirect syntax and configuration](https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file)
-- [Redirect options](https://docs.netlify.com/routing/redirects/redirect-options/)
-- [Creating better, more predicatable redirect rules for SPAs](https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/)
-- [Redirect by country or language](https://docs.netlify.com/routing/redirects/redirect-options/#redirect-by-country-or-language)
-- [On-Demand Builders](https://docs.netlify.com/configure-builds/on-demand-builders/)
 
 ## Testing
 
@@ -259,7 +289,3 @@ And lastly if you’d like to remove Cypress entirely, delete the entire `cypre
 ```bash
 npm uninstall cypress
 ```
-
-## Want to learn more?
-
-Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
