@@ -4,6 +4,10 @@
 
 This is an [Astro](https://astro.build) project bootstrapped from the Astro CLI. It is a reference on how to integrate commonly used features within [Netlify](https://netlify.com) for Astro. 
 
+[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-toolbox)
+
+Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
+
 ## Table of Contents:
 
 - [Getting Started](#getting-started)
@@ -54,12 +58,6 @@ netlify dev
 And now your project should be running on <http://localhost:8888>.
 
 ## Deploy to Netlify
-### Quick Setup + Deploy Option
-
-Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
-
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-toolbox)
-
 ### Deploying using the Netlify CLI
 
  #### 1. Cloning + Install Packages
