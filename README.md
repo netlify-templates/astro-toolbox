@@ -129,7 +129,7 @@ communicate that this is a field not meant to be filled in.
 For this to work we also need to add a `netlify-honeypot` attribute to the form element.
 
 ```html
-<netlify data-netlify-honeypot="bot-field" name="feedback method="POST" action="/success"></form>
+<form netlify data-netlify-honeypot="bot-field" name="feedback method="POST" action="/success"></form>
 ```
 
 [See it here in the template code.](https://github.com/netlify-templates/next-toolbox/blob/main/components/FeedbackForm.js#L8)
