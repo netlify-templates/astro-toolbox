@@ -13,7 +13,6 @@ Click this button and it will help you create a new repo, create a new Netlify p
 - [Getting Started](#getting-started)
   - [Running locally with the Netlify CLI](#running-locally-with-the-netlify-cli)
 - [Deploy to Netlify](#deploy-to-netlify)
-  - [Quick setup & Deploy Option](#quick-setup--deploy-option)
   - [Deploying using the Netlify CLI](#deploying-using-the-netlify-cli)
 - [Forms](#forms)
   - [Adding a Custom Submission Page](#adding-a-custom-submission-page)
