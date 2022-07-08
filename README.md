@@ -106,7 +106,7 @@ With both of those we're ready for folks to give us feedback!
 
 While Netlify provides a default submission page for folks, we can customize it as well! With the `action` attribute on the `form` tag we will be able to direct our users to our own page.
 
-In [`components/FeedbackForm.js`](./components/FeedbackForm.js) you'll see the form has the attribute `action="/success"` this will take our user to the custom route `/success` which we created under [`pages/success.js`](./pages/success.js). As long as the page exists, you can direct folks to it!
+In [`components/FeedbackForm.js`](https://github.com/netlify-templates/astro-toolbox/blob/main/src/components/FeedbackForm.astro) you'll see the form has the attribute `action="/success"` this will take our user to the custom route `/success` which we created under [`pages/success.js`](https://github.com/netlify-templates/astro-toolbox/blob/main/src/pages/success.astro). As long as the page exists, you can direct folks to it!
 
 ### Blocking bot spam with a honeypot field
 
