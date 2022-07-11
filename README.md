@@ -8,7 +8,7 @@ This is an [Astro](https://astro.build) project bootstrapped from the Astro CLI.
 
 Click this button and it will help you create a new repo, create a new Netlify project, and deploy!
 
-Here's a video for more info: https://youtu.be/ScnppyyR56U
+Here's a video for more info: https://youtu.be/GrSLYq6ZTes
 & a blog post too: https://ntl.fyi/3IrbbN7.
 
 ## Table of Contents:
