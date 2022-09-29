@@ -1,7 +1,7 @@
 ---
 const context = process.env.CONTEXT
-let baseURL = context == "deploy-preview" ? process.env.DEPLOY_PRIME_URL : context == 'production' ? process.env.URL : "http://localhost:8888"
-let jokesEndpoint = new URL("http://localhost:8888/api/joke", baseURL)
+let baseURL = context == "deploy-preview" ? process.env.DEPLOY_PRIME_URL : context == 'production' ? process.env.URL : "http://localhost:8888/api/joke"
+let jokesEndpoint = new URL(baseURL)
 let data = ''
 ---
 
