@@ -1,60 +1,51 @@
 ---
 import Layout from '../components/Layout.astro';
 import FeedbackForm from '../components/FeedbackForm.astro';
+import Jokes from '../components/jokes.astro';
+import SVG from '../components/svg.astro';
+import Buttons from '../components/Buttons.astro';
+import Intro from '../components/Intro.astro';
+import Redirect from '../components/Redirects.astro'
 ---
 
 <Layout title="Astro Toolbox">
   <main>
-    <div class="header">
-      <div class="logo">
-        <img
-          src="https://res.cloudinary.com/dzkoxrsdj/image/upload/v1652291187/astro_1_c1yk5a.png"
-        />
+    <SVG/>
+    <div id="content">
+      <div class="header">
+        <h1>Toolbox Template</h1>
+        <div class="logo">
+          <img
+            src="https://res.cloudinary.com/dzkoxrsdj/image/upload/v1652291187/astro_1_c1yk5a.png"
+          />
+        </div>
+        <div class="bttns">
+          <a href="https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-toolbox?utm_campaign=template-team&utm_source=dtn-button&utm_medium=dtn-button&utm_term=astro-tt-dtn-button&utm_content=astro-tt-dtn-button" class="bttn primary">Deploy to Netlify</a>
+          <a href="https://github.com/netlify-templates/astro-toolbox" class="bttn secondary">View Repo</a>
+        </div>
       </div>
+    <div id="right-content">
+      <Buttons />
+      <Intro />
+      <FeedbackForm />
+      <Jokes />
+      <Redirect/>
     </div>
-    <div class="intro">
-      <p>
-        Hi 👋! This template gives you an
-        <a href="https://astro.build/">Astro</a> app with the scaffolding for
-        <a href="https://ntl.fyi/3upc4Qo"
-          >Netlify Functions</a
-        >, <a href="https://ntl.fyi/3bICRk6">Forms</a>, and
-      <a href="https://ntl.fyi/3PcY8RH">Redirects</a>. Our
-      aim was to give you the code you would need to hit the ground running
-      with a few fun features.
-    </p>
-
-    <p>
-      You can find the code for this project on GitHub at
-      <a href="https://github.com/netlify-templates/astro-toolbox"
-        >https://github.com/netlify-templates/astro-toolbox</a
-      >! Happy coding!
-    </p>
-    </div>
-    <FeedbackForm />
-    <a class="jokes-link" href="/api/joke">
-    <h3>
-      Click here for function-loaded jokes!
-    </h3>
-    </a>
-    <footer class="footer">
-      Made with <a href="https://ntl.fyi/3P0dwBi"
-        ><img
-          src="https://res.cloudinary.com/dzkoxrsdj/image/upload/v1646714899/netliheart_ezlkim.svg"
-          alt="Netlify Logo"
-        /></a
-      > for you!
-    </footer>
+  </div>
   </main>
+  <footer class="footer">
+    Made with <a href="https://ntl.fyi/3P0dwBi"
+      ><img
+        src="https://res.cloudinary.com/dzkoxrsdj/image/upload/v1646714899/netliheart_ezlkim.svg"
+        alt="Netlify Logo"
+      /></a
+    > for you!
+  </footer>
 </Layout>
 
 <style>
   :root {
     text-align: center;
-  }
-  .logo img {
-    padding: 30px 0;
-    width: 100%;
   }
 
   main {
@@ -63,7 +54,7 @@ import FeedbackForm from '../components/FeedbackForm.astro';
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    max-width: 60ch;
+    /* height: 90vh; */
     align-items: center;
   } 
 

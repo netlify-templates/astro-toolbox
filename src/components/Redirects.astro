@@ -1,0 +1,44 @@
+---
+
+---
+
+<div class="redirect-wrapper">
+  <p>Within this template we used redirects to shorten the Jokes API endpoint created using Netlify Functions from <a href={`${process.env.URL}/.netlify/functions/joke`}>/.netlify/functions/joke</a> to <a href={`${process.env.URL}/api/joke`}>/api/joke</a> using the below snippet in the netlify.toml file</p>
+    <p class="code-snippet">
+      [[redirects]]<br>
+      &nbsp; from = "/api/*"<br>
+      &nbsp; to = "/.netlify/functions/:splat"<br>
+      &nbsp; status = 200<br>
+      &nbsp; force = true<br>
+    </p>
+    <p class="redirect-res">Redirect Resources</p>
+    <ul>
+      <li><a href="https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file">Redirect syntax and configuration</a></li>
+      <li><a href="https://docs.netlify.com/routing/redirects/redirect-options/">Redirect options</a></li>
+      <li><a href="https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/">Creating better, more predicatable redirect rules for SPAs</a></li>
+      <li><a href="https://docs.netlify.com/routing/redirects/redirect-options/#redirect-by-country-or-language">Redirect by country or language</a></li>
+      <li><a href="https://docs.netlify.com/configure-builds/on-demand-builders/">On-Demand Builders</a></li>
+    </ul>
+ </div>
+
+ <style>
+  .redirect-wrapper a{
+    color: black;
+  }
+
+  .redirect-wrapper ul{
+    text-align: left;
+  }
+  .code-snippet{
+    font-family: Consolas,"courier new";
+    color: white;
+    background-color: #1a1b32;
+    padding: 2px;
+    font-size: 105%;
+    text-align: left;
+  }
+
+  .redirect-res{
+    font-weight: bold;
+  }
+ </style>

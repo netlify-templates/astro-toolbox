@@ -1,0 +1,64 @@
+---
+---
+
+<script>
+    const bttns = document.querySelectorAll('.content-bttn')
+    bttns.forEach(bttn => {
+        bttn.onclick = function(event) {bttnFunction(event)}
+    })
+
+    function bttnFunction(event){
+        let id = event.target.id
+        let body = document.querySelector('body')
+        if(!body.classList.contains(id)){
+            body.removeAttribute("class")
+            body.classList.add(`${id}`)
+        }else{
+            body.classList.remove(`${id}`)
+            body.classList.add('sum')
+        }
+    }
+</script>
+
+<div class='content-bttns'>
+    <button type="button" class="content-bttn bttn" id="func"> Netlify Functions</button>
+    <button type="button" class="content-bttn bttn" id="form"> Netlify Forms</button>
+    <button type="button" class="content-bttn bttn" id="redirect"> Netlify Redirects</button>
+</div>
+
+<style>
+    .content-bttns{
+        display:flex;
+        justify-content: center;
+    }
+
+    button{
+        margin: 2% 2%;
+        padding: 1%;
+        border: 2px solid #093C4F;
+        background: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background: black;
+        color: white;
+    }
+
+    body.func button#func{
+        background: black;
+        color: white;
+    }
+
+    body.form button#form {
+        background: black;
+        color: white;
+    }
+    
+    body.redirect button#redirect{
+        background: black;
+        color: white;
+    }
+</style>

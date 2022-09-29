@@ -1,0 +1,25 @@
+---
+const context = process.env.CONTEXT
+let baseURL = context == "deploy-preview" ? process.env.DEPLOY_PRIME_URL : context == 'production' ? process.env.URL : "http://localhost:8888"
+let jokesEndpoint = new URL(`${baseURL}/api/joke`)
+let data = ''
+---
+
+<script define:vars={{ data, jokesEndpoint }}>
+  (async() => {
+    try {
+      let response = await fetch(jokesEndpoint)
+      data = await response.text()
+      document.querySelector('.jokes-link').insertAdjacentText('beforeend', data)
+    } catch {}
+    })()
+</script>
+<div class="jokes-wrapper">
+  <span>Dad Jokes:</span><p class="jokes-link"/>
+</div>
+
+<style>
+  .jokes-wrapper{
+    margin: 20% 0;
+  }
+</style>
