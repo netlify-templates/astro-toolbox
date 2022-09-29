@@ -1,8 +1,8 @@
 ---
 ---
 
-  <p>Here's an example of a Netlify Form! When you fill this out, the submissions can be found in the Netlify Admin site.</p>
   <div class="feedback-form">
+    <p>Here's an example of a Netlify Form! When you fill this out, the submissions can be found in the Netlify Admin site.</p>
       <form
         netlify
         netlify-honeypot
@@ -27,33 +27,50 @@
   </div>
 
 <style>
+
+  form{
+    display: flex;
+    flex-flow: column;
+    margin: 2% 0;
+    align-items: center;
+    flex-basis: 60%;
+  }
   .feedback-form {
-  margin: 40px 40px;
-  min-width: 250px;
-  width: 45%;
-}
-input,
-textarea,
-button {
-  font-size: inherit;
-  margin: 15px 0;
-  padding: 12px 20px;
-  width: 100%;
-}
-button {
-  background-color: teal;
-  border: 1px solid black;
-  color: white;
-  width: 50%;
-}
-.hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
+    min-width: 250px;
+  }
+  p{
+    display: flex;
+    align-items: center;
+    flex-basis: 40%;
+  }
+  input,
+  textarea,
+  button {
+    font-size: inherit;
+    margin: 15px 0;
+    display: flex;
+    padding: 6px 3px;
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #b4b4b4;
+    background: #ffffff99;
+  }
+  button {
+    background-color: teal;
+    border: 1px solid black;
+    color: white;
+    width: 50%;
+  }
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 </style>
 
