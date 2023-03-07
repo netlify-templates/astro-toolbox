@@ -1,6 +1,6 @@
 # Astro Toolbox Template  
 
-[![astro](https://user-images.githubusercontent.com/3611928/167888733-9bf21eda-d051-46f3-9184-12b14e21a10a.png)](https://ntl.fyi/3LZGn73)
+![Netlify + Astro](https://user-images.githubusercontent.com/43764894/223557634-f62606c5-bdf9-476c-9264-0d3728189962.png)
 
 This is an [Astro](https://astro.build) project bootstrapped from the Astro CLI. It is a reference on how to integrate commonly used features within [Netlify](https://netlify.com) for Astro. 
 
