@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# astro type generation
+.astro
