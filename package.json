@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "astro-toolbox",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,11 +14,11 @@
   "devDependencies": {
     "eslint": "^8.18.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0"
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.4.4"
   },
   "dependencies": {
     "astro": "^4.5.18",
-    "cypress": "^13.7.2",
-    "typescript": "^5.4.4"
+    "cypress": "^13.7.2"
   }
 }

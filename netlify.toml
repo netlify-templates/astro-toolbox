@@ -13,7 +13,7 @@
   [plugins.inputs.postBuild]
     enable = true
   
-  [plugin.inputs]
+  [plugins.inputs]
     enable = false
     
 [[redirects]]
