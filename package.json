@@ -12,12 +12,12 @@
     "lint:eslint": "eslint \"src/**/*.{css,js}\""
   },
   "devDependencies": {
-    "astro": "^1.0.0",
     "eslint": "^8.18.0",
-    "prettier": "^2.7.1",
+    "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   },
   "dependencies": {
-    "cypress": "^10.0.3"
+    "astro": "^4.5.18",
+    "cypress": "^13.7.2"
   }
 }
