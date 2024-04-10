@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "astro": "^4.5.18",
-    "cypress": "^13.7.2"
+    "cypress": "^13.7.2",
+    "typescript": "^5.4.4"
   }
 }
