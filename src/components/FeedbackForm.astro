@@ -4,7 +4,7 @@
   <p>Here's an example of a Netlify Form! When you fill this out, the submissions can be found in the Netlify Admin site.</p>
   <div class="feedback-form">
       <form
-        netlify
+        data-netlify="true"
         netlify-honeypot
         name="feedback"
         method="POST"
@@ -32,18 +32,24 @@
   min-width: 250px;
   width: 45%;
 }
+label {
+  font-size: 16px;
+}
 input,
 textarea,
 button {
+  border-radius: 5px;
+  border: 1px solid #cbd5e1;
   font-size: inherit;
   margin: 15px 0;
   padding: 12px 20px;
   width: 100%;
 }
 button {
-  background-color: teal;
-  border: 1px solid black;
-  color: white;
+  background-color: #2bdcd2;
+  border: 1px solid #2bdcd2;
+  color: #1e293b;
+  font-size: 16px;
   width: 50%;
 }
 .hidden {
