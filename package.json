@@ -16,7 +16,7 @@
     "netlify-plugin-cypress": "^2.2.1",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "typescript": "^5.4.4"
+    "typescript": "^6.0.0"
   },
   "dependencies": {
     "astro": "^4.5.18",
